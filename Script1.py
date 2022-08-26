@@ -64,3 +64,37 @@ print(list)
 # Foreach
 for val in list:
     print(val)
+
+lista = [1, 2, 3, 4, 5]
+list_result = [0, 0, 0, 0, 0]
+
+# Foreach
+'''
+for val in list:
+    list_result = val + 1
+'''
+
+# para sumar los elementos de la lista + 1
+for i in range(0, len(list)):
+    list_result[i] = list[i] + 1
+
+print(list_result)
+
+
+
+
+lista = [1, 2, 3, 4, 5]
+list_result = []
+
+# para añadir un elemento al final de la lista
+for val in lista:
+    list_result.append(val + 1)
+
+# El metodo pop va sacar el ultimo elemento de la lista
+pop_element = list_result.pop()
+
+#Para eliminar algun objeto de la lista
+list_result.remove(2)
+
+print(list_result)
+
