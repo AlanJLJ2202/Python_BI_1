@@ -45,6 +45,9 @@ class Gato(Animal):
 gato1 = Gato("Teodoro", 12)
 gato1.comer()
 
+#Media aritmetica, desviacion estandar
+#Utiizando ciclos, listas y etodos
+
 
 # Polimorfismo
 # Multiples objetos que tendran comportamientos similares.
