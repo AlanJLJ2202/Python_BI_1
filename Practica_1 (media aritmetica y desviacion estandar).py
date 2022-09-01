@@ -1,6 +1,6 @@
 import math
 
-x = [3, 4, 3]
+x = [3, 4, 5, 4, 5, 2]
 
 
 class practica_1:
