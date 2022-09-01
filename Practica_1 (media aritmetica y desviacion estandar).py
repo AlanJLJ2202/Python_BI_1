@@ -1,35 +1,33 @@
 import math
 
-# Practica 1 - Media aritmetica
-
-x = [1, 2, 3, 4, 5]
-sumatoria = 0
-
-for i in x:
-    print(i)
-    sumatoria += i
-
-print('Sumatoria', sumatoria)
-
-resultado = sumatoria / len(x)
-
-print('Resultado', resultado)
+x = [3, 4, 3]
 
 
-# Practica 1 - Desviacion estandar
+class practica_1:
 
-y = [1, 2, 3, 4, 5]
-sumatoria_2 = 0
+    def media_aritmetica(self):
+        sumatoria = 0
 
-for i in x:
-    print(i)
-    sumatoria_2 += (i - resultado)**2
+        for i in x:
+            sumatoria += i
 
-print(sumatoria_2)
+        print('Sumatoria', sumatoria)
+        media = sumatoria / len(x)
+        print('Media', media)
+        return media
 
-s = math.sqrt(sumatoria_2 / len(x))
+    def desviacion_estandar(self, media):
+        # Practica 1 - Desviacion estandar
+        sumatoria_2 = 0
 
-print('Desviacion', s)
+        for i in x:
+            sumatoria_2 += (i - media) ** 2
+
+        s = math.sqrt(sumatoria_2 / len(x))
+        print('Desviacion', s)
 
 
+test = practica_1()
 
+media = test.media_aritmetica()
+test.desviacion_estandar(media=media)
