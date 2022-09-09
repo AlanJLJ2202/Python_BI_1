@@ -1,32 +1,5 @@
 import numpy as np
 
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([1, 2, 3, 4, 5])
-
-
-def SumCancellation(x):
-    return np.sum(1 / (10 ** -5 + (x)))
-
-
-array_x = np.array([-0.10, 0.01, 0.07, 0.09, 0.11])
-array_y = np.array([-0.11, 0.05, 0.075, 0.08, 0.14])
-
-def Validacion(x, y):
-    for i in range(1, len(x)):
-        if x[i] == y[i]:
-            valor = y[i - 1] + x[i]
-            if x[i] == valor:
-                return 1
-            else:
-                return 0
-        else:
-            return 0
-
-
-if Validacion(x, y) == 1:
-    print('SumCancellation: ', SumCancellation(np.absolute(x)))
-
-
 def Rastrigin(x):
     result = 10 * len(x) + np.sum(x ** 2 - 10 * np.cos(2 * np.pi * x))
     return result
@@ -130,55 +103,13 @@ a = np.array([-32, -5, 4, 5, 32])
 
 print('Ackley: ', Ackley(a))
 
-'''
-def sphere_numpy(x):
-    return np.sum(x ** 2)
-
-
-x = np.array([3, 4, 5, 6])
-
-print(sphere_numpy(x))
-
-
-
-
-
-# Pendiente
-
-
-
-
-
-
-def Rastrigin(x):
-    for i in range(1, len(x)):
-        sum2 = np.sum(x ** 2 - 10 * np.cos(2 * np.pi * x))
-    return (10 * len(x)) + sum2
-
-
-def TwoAxes(x):
-    for i in range(1, len(x) / 2):
-        sum1 = np.sum((10 ** 6) * x[i] ** 2)
-    for i in range((len(x) / 2) + 1, len(x)):
-        sum1 = np.sum(x ** 2)
-    return sum + sum1
-
-
-def Ellipsoid(x):
-    for i in range(1, len(x)):
-        eli = np.sum((10 ** (6 * ((i - 1) / len(x) - 1))) * x ** 2)
-    return eli
-
-
-
-
 
 
 def Rosenbrock(x):
     for i in range(2, len(x) - 1):
-        ros = np.sum(100 * ((x[i] - x[i - 1] ** 2) ** 2) + (x[i] - 1) ** 2)
-    return ros
+        resultado = np.sum(100 * ((x[i] - x[i - 1] ** 2) ** 2) + (x[i] - 1) ** 2)
+    return resultado
 
-print(sphere(x))
+r = np.array([-10, -5, 4, 5, 10])
 
-'''
+print('Rosenbrock: ', Rosenbrock(r))
