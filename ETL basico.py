@@ -1,17 +1,40 @@
 import pandas as pd
 
+import matplotlib.pyplot as plt
 
 
-# lista_columnas = ["Id", "SepalLengthCm", "SepalWidthCm", "PetalLengthCm", "PetalWidthCm", "Species"]
+# Los nombres de las columnas fueron puestos manualmente en el csv
 
-#iris = pd.read_csv("iris.csv", usecols=[0, 1, 2, 3, 4, 5], names=["Id", "SepalLengthCm", "SepalWidthCm", "PetalLengthCm", "PetalWidthCm", "Species"],  header=None)
+def extract(ruta):
+    csv = pd.read_csv(ruta)
+    return csv
 
 
-iris = pd.read_csv("iris.csv")
+def transform(csv):
+    # Aquellas plantas cuyo largo de sépalo y largo del pétalo esten entre 4.7 y 6.1
+
+    condicion_1 = csv.loc[(csv['SepalLengthCm'] >= 4.7) & (csv['SepalLengthCm'] <= 6.1)]
+    condicion_2 = condicion_1.loc[(csv['PetalLengthCm'] >= 4.7) & (csv['PetalLengthCm'] <= 6.1)]
+    ejercicio_1 = condicion_2
+
+    # Aquellas plantas cuyo ancho del pétalo sea mayor que 2.1
+
+    ejercicio_2 = csv[lambda x: x['PetalWidthCm'] > 2.1]
+
+    return ejercicio_1, ejercicio_2
 
 
-primer_condicion = iris.loc[(iris['SepalLengthCm'] >= 4.7) & (iris['SepalLengthCm'] <= 6.1)]
-print(primer_condicion.loc[(iris['PetalLengthCm'] >= 4.7) & (iris['PetalLengthCm'] <= 6.1)])
+def load(ejercicio_1, ejercicio_2):
+    writer = pd.ExcelWriter('ETL.xlsx')
+    ejercicio_1.to_excel(writer, sheet_name='Largo_sepalo_petalo', index=True)
+    ejercicio_2.to_excel(writer, sheet_name='Ancho_petalo', index=True)
+    writer.save()
 
-print(iris[lambda x: x['PetalWidthCm'] > 2.1])
 
+# load(transform(extract("iris.csv"))[0], transform(extract("iris.csv"))[1])
+
+
+# csv = pd.read_csv("iris.csv")
+
+# csv_2.plot()
+plt.show()
