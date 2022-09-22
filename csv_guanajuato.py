@@ -1,20 +1,14 @@
 import pandas as pd
 
-
-def load(source):
-    csv = pd.read_csv(source)
-    return csv
-
-csv = load("Historico de Contagio de COVID-19 - Estado de Guanajuato_Página 1_Serie temporal.csv")
-print('CSV: ', csv)
+def load(source_csv, data_series, index_series, name_series):
+    csv = pd.read_csv(source_csv)
+    Serie = pd.Series(data=csv[data_series].values, index=csv[index_series].values, name=name_series)
+    return Serie
 
 
-serie = csv.transpose()
-serie.name = 'Contagios'
+series = load("Historico de Contagio de COVID-19 - Estado de Guanajuato_Página 1_Serie temporal.csv", 'Por dia', 'Fecha', 'Serie de prueba')
+print('Serie: ', series)
 
-json = csv['Fecha'].to_json()
 
-print(json)
+print('Dia:', series.idxmax(), 'Casos:', series.max())
 
-series = pd.read_json(json, typ='series', orient='records')
-print('Serie: ', series.values)
